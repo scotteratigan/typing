@@ -1,5 +1,5 @@
 div.text-to-type {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   max-width: 80vw;
   border: 1px solid grey;
   border-radius: 4px;
@@ -11,13 +11,13 @@ div.text-to-type {
 
 .passage-title {
   text-align: left;
-  font-family: 'Lato', sans-serif;
   margin-bottom: 2rem;
+  font-family: 'Lato', sans-serif;
 }
 
 .passage-attribution {
   margin-top: 2rem;
   text-align: right;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   font-style: italic;
 }

@@ -1,0 +1,16 @@
+div.footer {
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: black;
+    display: inline-block;
+    &.smaller {
+      font-size: 0.7em;
+      margin: 0 0.5em;
+    }
+  }
+  a:active {
+    color: grey;
+  }
+}
