@@ -1,3 +1,23 @@
-.mistyped {
-  background-color: pink;
+div.text-to-type {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 80vw;
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 10px;
+  line-height: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.passage-title {
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 2rem;
+}
+
+.passage-attribution {
+  margin-top: 2rem;
+  text-align: right;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
 }

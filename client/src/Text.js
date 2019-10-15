@@ -1,28 +1,15 @@
 import React from 'react';
+import TextChar from './TextChar';
 import './Text.scss';
 
-const activeStyle = {
-  borderBottom: '2px solid black',
-};
-
-const errorStyle = {
-  backgroundColor: 'red',
-};
-
-export default function Text({ text, position, errArr }) {
+export default function Text({ textArr, position, errArr }) {
   return (
-    <div>
-      {text.split('').map((char, i) => (
-        <span
-          key={i}
-          style={i === position ? activeStyle : null}
-          className={errArr[i] ? 'mistyped' : null}>
-          {char}
-        </span>
+    <div className='text-to-type'>
+      <div className='passage-title'>Gettysberg Address:</div>
+      {textArr.map((char, i) => (
+        <TextChar char={char} key={i} isActive={i === position} isTypo={errArr[i]} />
       ))}
+      <div className='passage-attribution'>- President Lincoln, November 19, 1863</div>
     </div>
   );
 }
-
-// textDecoration: i === position ? 'underline' : 'none'
-// border-bottom: 2px solid
