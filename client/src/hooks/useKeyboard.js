@@ -1,14 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-export default function useKeyboard(setTextPosition) {
+export default function useKeyboard(setTextPosition, textPassage, setErrArr) {
   const [activeKeys, setActiveKeys] = useState({});
 
   function keyDownHandler(e) {
     if (!activeKeys[e.key]) {
-      setTextPosition(prevPosition => prevPosition + 1);
+      if (e.key === 'Backspace') {
+        setTextPosition(prevPosition => prevPosition - 1);
+      } else if (e.key !== 'Shift') {
+        setTextPosition(prevPosition => {
+          const char = textPassage.charAt(prevPosition);
+          if (char !== e.key) {
+            setErrArr(prevErrArr => {
+              const newErrArr = [...prevErrArr];
+              newErrArr[prevPosition] = true;
+              return newErrArr;
+            });
+          } else {
+            setErrArr(prevErrArr => {
+              const newErrArr = [...prevErrArr];
+              newErrArr[prevPosition] = false;
+              return newErrArr;
+            });
+          }
+          return prevPosition + 1;
+        });
+      }
       setActiveKeys(prevActiveKeys => {
-        console.log('key is down:', e.key);
         const newActiveKeys = { ...prevActiveKeys };
         newActiveKeys[e.key] = true;
         return newActiveKeys;
@@ -18,9 +37,7 @@ export default function useKeyboard(setTextPosition) {
 
   function keyUpHandler(e) {
     if (activeKeys[e.key]) {
-      setTextPosition(prevPosition => prevPosition + 1);
       setActiveKeys(prevActiveKeys => {
-        console.log('key is down:', e.key);
         const newActiveKeys = { ...prevActiveKeys };
         newActiveKeys[e.key] = false;
         return newActiveKeys;
